@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div id="log"></div>
+    <script>
+
+        /******Js--面向对象基础篇*******/
+        //对象:对象是一个整体，它对外提供一些操作，比如属性、方法等等！
+
+        /**
+        *定义一个数组
+        */
+        var arr = [1, 2, 3, 4, 5];
+
+        /**
+         *输出arr类似，说明数组就是对象
+         */
+        var val = "";
+        val += "<br />" + "类型：" + typeof (arr).toString();
+        val += "<br />" + "长度：" + arr.length.toString();
+        //push方法
+        arr.push(6);
+        val += "<br />" + "元素：";
+
+        var cc = arr.map(a => val += +a.toString() + ",");
+
+        arr.forEach(element => {
+            val += element + ",";
+        });
+
+
+        var arr2 = [
+            { id: 1, name: "zhangsan1", selected: false },
+            { id: 2, name: "zhangsan2", selected: false },
+            { id: 3, name: "zhangsan3", selected: true },
+        ];
+
+        val += "<br />" + "数组二：";
+        arr2.forEach(function (el, index, arr2) {
+            console.log(el)
+            val += el.name + ",";
+        });
+
+        $("#log").html(val);
+
+        arr.show = function () {
+            //this指向数组本身对象
+            alert(this)
+
+        }
+        arr.show();
+
+        arr2.show = function () {
+            //this指向数组本身对象
+            // alert(this.toString())
+            this.forEach(element => {
+                alert(element.name)
+            });
+
+        }
+        //  arr2.show();
+
+        ///面向对象///
+        //构造函数
+
+        var People = function (name, age) {
+            this.name = name;
+            this.age = age;
+            this.Speak = () => console.log("He is Chinese,Name:" + this.name + ",Age:" + this.age);
+        }
+
+
+        //使用继承方法=Man继承People的所有方法
+        var Man = function (name, age) {
+            People.call(this, name, age);
+            this.Speak = (t) => console.log("He is SuperMan,Name:" + this.name + ",Age:" + this.age + "技能：" + t);
+        }
+        Man.prototype.Smoke = function () {
+            alert(this.name + '在抽烟');
+        }
+
+        var tMan = new Man("Mark", 20);
+        tMan.Speak("飞行");
+        tMan.Smoke();
+
+        /*******递归函数*****/
+        var fact = (x) => (x == 0 ? 1 : x * fact(x - 1));
+        console.log(fact(5));       // 120
+
+
+        var years = [ 1954, 1974, 1990, 2006, 2010, 2014 ];
+            var year=1989;
+            find
+        var findTrueYeay=years.filter(y=>y>=year?y:0);
+        console.log(findTrueYeay);
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
